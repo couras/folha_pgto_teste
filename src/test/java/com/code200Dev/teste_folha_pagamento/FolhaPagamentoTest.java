@@ -24,10 +24,15 @@ public class FolhaPagamentoTest {
 	
 	@Test
 	public void calculaSalario() {
-		rh.adicioNaFolha(new FolhaPagamento(funcionario1, 160, 150.0));
+		CriadorFolhaPgto criador = new CriadorFolhaPgto();
+		
+		rh = criador.createFuncionario("Catra", 3).createFolhaPgto(160, 150.0).constroi();
+		rh.calculaFolhaPgto();
+		
+		//rh.adicioNaFolha(new FolhaPagamento(funcionario1, 160, 150.0));
 		//rh.adicioNaFolha(new FolhaPagamento(funcionario2, 44, 28.0));
 		//rh.adicioNaFolha(new FolhaPagamento(funcionario3, 36, 48.0));
-		rh.calculaFolhaPgto();
+		//rh.calculaFolhaPgto();
 		
 		assertEquals(24150.00, rh.getSalarioBruto(), 0.0001);
         assertEquals(20286.00, rh.getSalarioLiquido(), 0.0001);
